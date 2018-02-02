@@ -67,6 +67,10 @@ At Python Interactive Console, please execute the following command:
 >>> steven = Person.objects.create(name="Steven Adler")
 
 >>> guns_and_roses = Group.objects.create(name="Guns N' Roses")
+>>> velvet_revolver = Group.objects.create(name="Velvet Revolver")
+
+>>> scott = Person.objects.create(name="Scott Weiland")
+>>> dave = Person.objects.create(name="Dave Kushner")
 >>> matt = Person.objects.create(name="Matt Sorum")
 
 >>> from datetime import date
@@ -81,14 +85,23 @@ At Python Interactive Console, please execute the following command:
 >>> m4.save()
 >>> m5 = Membership(person=steven, group=guns_and_roses, date_joined=date(1985, 3, 16), invite_reason="Wanted to form a band..", actived=True)
 >>> m5.save()
+>>> m6 = Membership(person=slash, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
+>>> m6.save()
+>>> m7 = Membership(person=scott, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
+>>> m7.save()
+>>> m8 = Membership(person=dave, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
+>>> m8.save()
+>>> m9 = Membership(person=matt, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
+>>> m9.save()
+>>> m10 = Membership(person=duff, group=velvet_revolver, date_joined=date(1985, 3, 16), invite_reason="Wanted to form a new band...", actived=True)
+>>> m10.save()
 
 >>> Membership.objects.all()
-[<Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>]
+[<Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 2002-01-22>, <Membership: Member: True from 2002-01-22>, <Membership: Member: True from 2002-01-22>, <Membership: Member: True from 2002-01-22>, <Membership: Member: True from 1985-03-16>]
 >>> Person.objects.all()
-[<Person: Axl Rose>, <Person: Slash>, <Person: Duff McKagan>, <Person: Izzy Stradlin>, <Person: Steven Adler>]
+[<Person: Axl Rose>, <Person: Slash>, <Person: Duff McKagan>, <Person: Izzy Stradlin>, <Person: Steven Adler>, <Person: Scott Weiland>, <Person: Dave Kushner>, <Person: Matt Sorum>]
 >>> Group.objects.all()
-[<Group: Guns N' Roses>]
->>> 
+[<Group: Guns N' Roses>, <Group: Velvet Revolver>]
 
 >>> axl = Person.objects.get(id=1)
 >>> axl
@@ -108,11 +121,13 @@ u'Wanted to form a band..'
 
 >>> axl.group_set.all()
 [<Group: Guns N' Roses>]
+>>> slash.group_set.all()
+[<Group: Guns N' Roses>, <Group: Velvet Revolver>]
 >>> guns_and_roses.members.all()
 [<Person: Axl Rose>, <Person: Slash>, <Person: Duff McKagan>, <Person: Izzy Stradlin>, <Person: Steven Adler>]
 
->>> Group.objects.filter(members__name__startswith='Sl')
-[<Group: Guns N' Roses>]
+>>> Group.objects.filter(members__name__startswith='Slash')
+[<Group: Guns N' Roses>, <Group: Velvet Revolver>]
 ```
 
 # Reference
