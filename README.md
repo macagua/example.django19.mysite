@@ -60,7 +60,7 @@ At Python Interactive Console, please execute the following command:
 ```python
 >>> from myapp.models import Person, Group, Membership
 
->>> axl = Person.objects.create(name="Axel Rose")
+>>> axl = Person.objects.create(name="Axl Rose")
 >>> slash = Person.objects.create(name="Slash")
 >>> duff = Person.objects.create(name="Duff McKagan")
 >>> izzy = Person.objects.create(name="Izzy Stradlin")
@@ -85,14 +85,14 @@ At Python Interactive Console, please execute the following command:
 >>> Membership.objects.all()
 [<Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>, <Membership: Member: True from 1985-03-16>]
 >>> Person.objects.all()
-[<Person: Axel Rose>, <Person: Slash>, <Person: Duff McKagan>, <Person: Izzy Stradlin>, <Person: Steven Adler>]
+[<Person: Axl Rose>, <Person: Slash>, <Person: Duff McKagan>, <Person: Izzy Stradlin>, <Person: Steven Adler>]
 >>> Group.objects.all()
 [<Group: Guns N' Roses>]
 >>> 
 
 >>> axl = Person.objects.get(id=1)
 >>> axl
-<Person: Axel Rose>
+<Person: Axl Rose>
 
 >>> guns_and_roses = Group.objects.get(id=1)
 >>> guns_and_roses
@@ -109,7 +109,7 @@ u'Wanted to form a band..'
 >>> axl.group_set.all()
 [<Group: Guns N' Roses>]
 >>> guns_and_roses.members.all()
-[<Person: Axel Rose>, <Person: Slash>, <Person: Duff McKagan>, <Person: Izzy Stradlin>, <Person: Steven Adler>]
+[<Person: Axl Rose>, <Person: Slash>, <Person: Duff McKagan>, <Person: Izzy Stradlin>, <Person: Steven Adler>]
 
 >>> Group.objects.filter(members__name__startswith='Sl')
 [<Group: Guns N' Roses>]
