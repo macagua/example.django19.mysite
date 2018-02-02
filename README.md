@@ -125,6 +125,8 @@ u'Wanted to form a band..'
 [<Group: Guns N' Roses>, <Group: Velvet Revolver>]
 >>> guns_and_roses.members.all()
 [<Person: Axl Rose>, <Person: Slash>, <Person: Duff McKagan>, <Person: Izzy Stradlin>, <Person: Steven Adler>]
+>>> velvet_revolver.members.all()
+[<Person: Slash>, <Person: Scott Weiland>, <Person: Dave Kushner>, <Person: Matt Sorum>, <Person: Duff McKagan>]
 
 >>> Group.objects.filter(members__name__startswith='Slash')
 [<Group: Guns N' Roses>, <Group: Velvet Revolver>]
