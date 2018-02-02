@@ -58,7 +58,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 At Python Interactive Console, please execute the following command:
 
 ```python
->>> from myapp.models import Person, Group, Membership
+>>> from myapp.models.music_band import Person, Group, Membership
 
 >>> axl = Person.objects.create(name="Axl Rose")
 >>> slash = Person.objects.create(name="Slash")
