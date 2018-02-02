@@ -36,7 +36,7 @@ class Group(models.Model):
         return self.name
 
     def get_all_members(self):
-        return self.members.values_list('name', flat=True).order_by('name')
+        return ', '.join(self.members.values_list('name', flat=True).order_by('name'))
     get_all_members.admin_order_field = 'group__members'
     get_all_members.short_description = 'Group members'
 
