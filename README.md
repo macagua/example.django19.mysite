@@ -1,5 +1,6 @@
 # django19_mysite
-My practices about Django 1.9 Project tutorial https://docs.djangoproject.com/en/1.9/intro/
+
+My practices about [Django 1.9 Project tutorial](https://docs.djangoproject.com/en/1.9/intro/) and [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
 
 ## Installation
 
@@ -135,3 +136,4 @@ u'Wanted to form a band..'
 # Reference
 
 - [Django 1.9 Project tutorial](https://docs.djangoproject.com/en/1.9/intro/).
+- [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
