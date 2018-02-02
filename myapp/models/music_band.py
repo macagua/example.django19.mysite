@@ -6,7 +6,8 @@ from django.db import models
 
 # Create your models here.
 class Person(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128,
+        help_text="Enter the musician name of group musical")
 
     class Meta:
         verbose_name = "Person"
@@ -18,8 +19,10 @@ class Person(models.Model):
     def __str__(self):
         return self.name
 
+
 class Group(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128,
+        help_text="Enter the group musical name")
     members = models.ManyToManyField(Person, through='Membership')
 
     class Meta:
@@ -32,12 +35,22 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
+    def get_all_members(self):
+        return self.members.values_list('name', flat=True)
+    get_all_members.admin_order_field = 'group__members'
+    get_all_members.short_description = 'Group members'
+
+
 class Membership(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    date_joined = models.DateField()
-    invite_reason = models.CharField(max_length=64)
-    actived = models.BooleanField(default=True)
+    person = models.ForeignKey(Person, on_delete=models.CASCADE,
+        help_text="Select a musician from the list.")
+    group = models.ForeignKey(Group, on_delete=models.CASCADE,
+        help_text="Select a group musical from the list.")
+    date_joined = models.DateField(help_text="The date that membership was made.")
+    invite_reason = models.CharField(max_length=64,
+        help_text="Enter the invite reason to this group musical.")
+    actived = models.BooleanField(default=True,
+        help_text="This membership is actived?")
 
     class Meta:
         verbose_name = "Membership"
