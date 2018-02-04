@@ -22,6 +22,10 @@ class PointOfSale(models.Model):
     actived = models.BooleanField(default=True,
         help_text="This point of sale is actived?")
 
+    class Meta:
+        verbose_name = "Point Of Sale"
+        verbose_name_plural = "Points Of Sale"
+
     def __unicode__(self):
         return u'{0}'.format(self.name)
 
