@@ -6,7 +6,6 @@ from rest_framework import routers
 from pos import views
 
 router = routers.DefaultRouter()
-router.register(r'userprofiles', views.UserProfileViewSet)
 router.register(r'list', views.PointOfSaleViewSet)
 
 # Wire up our API using automatic URL routing.

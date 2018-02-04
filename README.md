@@ -65,7 +65,7 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0
         "latitude": "-71.1561100",
         "options": "N/P",
         "userprofile": [
-            "http://127.0.0.1:8000/pos/userprofiles/2/"
+            "http://127.0.0.1:8000/mysite/userprofiles/2/"
         ],
         "message": "Registrado",
         "actived": true
@@ -79,7 +79,7 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0
         "latitude": "-71.1561100",
         "options": "N/P",
         "userprofile": [
-            "http://127.0.0.1:8000/pos/userprofiles/1/"
+            "http://127.0.0.1:8000/mysite/userprofiles/1/"
         ],
         "message": "Registrado",
         "actived": true
@@ -96,29 +96,51 @@ http://localhost:8000/pos/web-client/
 For testing the **User Profiles** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0.0.1:8000/pos/userprofiles/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://127.0.0.1:8000/mysite/userprofiles/
 [
     {
         "id": 1,
-        "user": "leonardo",
-        "photo": "http://127.0.0.1:8000/pos/userprofiles/pos/static/images/avatars/yo.png",
-        "website": "https://macagua.github.io/",
-        "bio": "Leonardo José Caballero Garcia is Technical Director at Covantec R.L. firm. He has over 15 years experience in the area of Information Technology of which 12 years are unique in free and open-source software.",
-        "phone": "+58 1234567890",
-        "city": "Rubio",
-        "country": "Venezuela",
-        "organization": "Plone Venezuela"
-    },
-    {
-        "id": 2,
         "user": "admin",
-        "photo": "http://127.0.0.1:8000/pos/userprofiles/pos/static/images/avatars/patacon.jpg",
+        "photo": "http://127.0.0.1:8000/mysite/userprofiles/myapp/static/images/avatars/patacon.jpg",
         "website": "http://localhost:8000/admin/",
         "bio": "Website Aministrator",
         "phone": "+58 0987654321",
         "city": "Maracaibo",
         "country": "Venezuela",
         "organization": "My Company"
+    },
+    {
+        "id": 2,
+        "user": "leonardo",
+        "photo": "http://127.0.0.1:8000/mysite/userprofiles/myapp/static/images/avatars/yo.png",
+        "website": "https://macagua.github.io/",
+        "bio": "Leonardo José Caballero Garcia is Technical Director at Covantec R.L. firm. He has over 15 years experience in the area of Information Technology of which 12 years are unique in free and open-source software.",
+        "phone": "+58 1234567890",
+        "city": "Rubio",
+        "country": "Venezuela",
+        "organization": "Plone Venezuela"
+    }
+]
+```
+
+#### Users endpoint
+
+For testing the **users** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://127.0.0.1:8000/mysite/users/
+[
+    {
+        "url": "http://127.0.0.1:8000/mysite/users/2/",
+        "username": "leonardo",
+        "email": "leonardo@mail.com",
+        "is_staff": true
+    },
+    {
+        "url": "http://127.0.0.1:8000/mysite/users/1/",
+        "username": "admin",
+        "email": "admin@mail.com",
+        "is_staff": true
     }
 ]
 ```
