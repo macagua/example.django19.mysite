@@ -47,21 +47,15 @@ $ python manage.py runserver
 
 ### Points Of Sale App
 
-For add data for *Points Of Sale* App, please access to the following URL:
-
-[http://0.0.0.0:8000/admin/pos/](http://0.0.0.0:8000/admin/pos/)
+For add data for *Points Of Sale* App, please access to the following URL: [http://0.0.0.0:8000/admin/pos/](http://0.0.0.0:8000/admin/pos/)
 
 ### Polls App
 
-For add data for *Polls* App, please access to the following URL:
-
-[http://0.0.0.0:8000/admin/pos/](http://0.0.0.0:8000/admin/polls/)
+For add data for *Polls* App, please access to the following URL: [http://0.0.0.0:8000/admin/polls/](http://0.0.0.0:8000/admin/polls/)
 
 ### My Application App
 
-For add data for *My Application* App, please access to the following URL:
-
-[http://0.0.0.0:8000/admin/pos/](http://0.0.0.0:8000/admin/myapp/)
+For add data for *My Application* App, please access to the following URL: [http://0.0.0.0:8000/admin/myapp/](http://0.0.0.0:8000/admin/myapp/)
 
 ### Testing the API
 
