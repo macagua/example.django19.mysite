@@ -1,6 +1,10 @@
 # django19_mysite
 
-My practices about [Django 1.9 Project tutorial](https://docs.djangoproject.com/en/1.9/intro/) and [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
+My practices about the following tutorials:
+
+- [Django 1.9 Project tutorial](https://docs.djangoproject.com/en/1.9/intro/).
+- [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
+- [Introducción a Django Rest Framework](https://axiacore.com/blog/2012/06/introduccion-a-django-rest-framework/).
 
 ## Installation
 
@@ -23,9 +27,7 @@ This Django Web app need a to create a Django Admin User, for access and manager
 **Tip:** for this local installation use the user as **admin** and password as **admin**.
 
 ```bash
-$ python manage.py createsuperuser
-Username (leave blank to use 'user'): admin
-Email address: your-user@mail.com
+$ python manage.py createsuperuser --email admin@mail.com --username admin
 Password: 
 Password (again): 
 Superuser created successfully.
@@ -42,6 +44,84 @@ $ python manage.py runserver
 - Open your web browser with the following URL: [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and see the Django Web app.
 
 - Open your web browser with the following URL: [http://0.0.0.0:8000/admin/](http://0.0.0.0:8000/admin/) and see the Django Admin Interface, use the user **admin** and password **admin**.
+
+### Testing the API
+
+You have many APIs Rest for testing, now access to the APIs, both from the command-line, using tools like **curl**, please execute the following command:
+
+#### Points Of Sale endpoint
+
+For testing the **Points Of Sale** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0.0.1:8000/pos/list/
+[
+    {
+        "id": 2,
+        "name": "Restaurante Tinjaca",
+        "address": "Av. 3, Hotel Tinjaca, frente al CC Gran Mundo, Centro, Merida, Venezuela",
+        "brand": "Hotel Tinjaca",
+        "longitude": "8.5897200",
+        "latitude": "-71.1561100",
+        "options": "N/P",
+        "userprofile": [
+            "http://127.0.0.1:8000/pos/userprofiles/2/"
+        ],
+        "message": "Registrado",
+        "actived": true
+    },
+    {
+        "id": 1,
+        "name": "Churros Ezq. Dorzay",
+        "address": "Av. 4, Ezq. Dorzay, Centro, Merida, Venezuela",
+        "brand": "Dorzay",
+        "longitude": "8.5897200",
+        "latitude": "-71.1561100",
+        "options": "N/P",
+        "userprofile": [
+            "http://127.0.0.1:8000/pos/userprofiles/1/"
+        ],
+        "message": "Registrado",
+        "actived": true
+    }
+]
+```
+
+You can also consume this API endpoint using a web client demo based on Javascrit by accessing the following URL:
+
+http://localhost:8000/pos/web-client/
+
+#### User Profiles endpoint
+
+For testing the **User Profiles** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0.0.1:8000/pos/userprofiles/
+[
+    {
+        "id": 1,
+        "user": "leonardo",
+        "photo": "http://127.0.0.1:8000/pos/userprofiles/pos/static/images/avatars/yo.png",
+        "website": "https://macagua.github.io/",
+        "bio": "Leonardo José Caballero Garcia is Technical Director at Covantec R.L. firm. He has over 15 years experience in the area of Information Technology of which 12 years are unique in free and open-source software.",
+        "phone": "+58 1234567890",
+        "city": "Rubio",
+        "country": "Venezuela",
+        "organization": "Plone Venezuela"
+    },
+    {
+        "id": 2,
+        "user": "admin",
+        "photo": "http://127.0.0.1:8000/pos/userprofiles/pos/static/images/avatars/patacon.jpg",
+        "website": "http://localhost:8000/admin/",
+        "bio": "Website Aministrator",
+        "phone": "+58 0987654321",
+        "city": "Maracaibo",
+        "country": "Venezuela",
+        "organization": "My Company"
+    }
+]
+```
 
 ## Django ORM Practices
 
@@ -137,3 +217,4 @@ u'Wanted to form a band..'
 
 - [Django 1.9 Project tutorial](https://docs.djangoproject.com/en/1.9/intro/).
 - [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
+- [Introducción a Django Rest Framework](https://axiacore.com/blog/2012/06/introduccion-a-django-rest-framework/).

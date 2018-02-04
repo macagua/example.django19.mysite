@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Consume the RESTful API from Javascript</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript">
+    function load_pos_list(){
+      $.get("/pos/list/", function(data){
+        for(i = 0; i < data.length; i++){
+          $("#div_rest_pos").append('<b>Point of sale:</b> <span>' + data[i].name + ' - ' + data[i].brand + '.</span><br/>');
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <div id="div_rest_pos">
+  	<h1>How to consume the RESTful API from Javascript?</h1>
+  	<p>Please, check the following button for consume the RESTful API.</p>
+    <button id="button_rest" name"Test">Test</button><br/><br/>
+  </div>
+
+  <script type="text/javascript">
+    $("#button_rest").click(function(){
+      load_pos_list();
+    });
+  </script>
+</body>
+</html>

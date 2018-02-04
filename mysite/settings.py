@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     'myapp.apps.MyappConfig',
     'polls.apps.PollsConfig',
+    'pos.apps.PosConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -132,5 +133,10 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    # Source http://www.django-rest-framework.org/api-guide/pagination/
+    # 'DEFAULT_PAGINATION_CLASS': [
+    #     'pos.api.pagination.LimitTenPagination'
+    # ],
+    # 'PAGE_SIZE': 10
 }
