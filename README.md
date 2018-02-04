@@ -58,9 +58,9 @@ For add data for *Polls* App, please access to the following URL: [http://localh
 
 For add data for *My Application* App, please access to the following URL: [http://localhost:8000/admin/myapp/](http://localhost:8000/admin/myapp/)
 
-### TV Series App
+### Webflix App
 
-For add data for *TV Series* App, please access to the following URL: [http://localhost:8000/admin/series/](http://localhost:8000/admin/series/)
+For add data for *Webflix* App, please access to the following URL: [http://localhost:8000/admin/webflix/](http://localhost:8000/admin/webflix/)
 
 ### Testing the API
 
@@ -227,7 +227,7 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://local
 For testing the **Tv Series list** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/series/list/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/webflix/tv-series/list/
 [{"id":1,"name":"Game of Thrones","release_date":"2011-04-17","rating":0,"category":"drama"},{"id":2,"name":"Mr. Robot","release_date":"2015-06-24","rating":0,"category":"drama"},{"id":4,"name":"Timeless","release_date":"2016-02-04","rating":3,"category":"fiction"},{"id":5,"name":"Black Mirror","release_date":"2011-12-17","rating":0,"category":"fiction"}]
 ```
 
@@ -236,7 +236,7 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://local
 For testing the **Tv Series detail** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/series/detail/1/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/webflix/tv-series/detail/1/
 {"id":1,"name":"Game of Thrones","release_date":"2011-04-17","rating":0,"category":"drama"}
 ```
 
@@ -245,14 +245,14 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://local
 For testing the **Tv Series create** API Rest, please execute the following command:
 
 ```bash
-$ curl -i -X POST -H 'Accept: application/json; indent=4' -u admin:password123 -d '{"name":"Alf","release_date":"1985-04-17","rating":4,"category":"comedy"}' http://localhost:8000/series/list/
+$ curl -i -X POST -H 'Accept: application/json; indent=4' -u admin:password123 -d '{"name":"Alf","release_date":"1985-04-17","rating":4,"category":"comedy"}' http://localhost:8000/webflix/tv-series/list/
 HTTP/1.0 201 Created
-Date: Sun, 04 Feb 2018 20:28:33 GMT
+Date: Sun, 04 Feb 2018 23:07:06 GMT
 Server: WSGIServer/0.1 Python/2.7.13
 X-Frame-Options: SAMEORIGIN
 Content-Type: application/json
 
-{"id":6,"name":"Alf","release_date":"1985-04-17","rating":4,"category":"comedy"}
+{"id":4,"name":"Alf","release_date":"1985-04-17","rating":4,"category":"comedy"}
 ```
 
 #### Tv Series update endpoint
@@ -260,14 +260,14 @@ Content-Type: application/json
 For testing the **Tv Series update** API Rest, please execute the following command:
 
 ```bash
-$ curl -i -X PUT -H 'Accept: application/json; indent=4' -u admin:password123 -d '{"name":"ALF","release_date":"1990-09-22","rating":4,"category":"comedy"}' http://localhost:8000/series/detail/6/
-HTTP/1.0 201 Created
-Date: Sun, 04 Feb 2018 20:28:33 GMT
+$ curl -i -X PUT -H 'Accept: application/json; indent=4' -u admin:password123 -d '{"name":"ALF","release_date":"1990-09-22","rating":4,"category":"comedy"}' http://localhost:8000/webflix/tv-series/detail/4/
+HTTP/1.0 200 OK
+Date: Sun, 04 Feb 2018 23:08:58 GMT
 Server: WSGIServer/0.1 Python/2.7.13
 X-Frame-Options: SAMEORIGIN
 Content-Type: application/json
 
-{"id":6,"name":"Alf","release_date":"1985-04-17","rating":4,"category":"comedy"}
+{"id":4,"name":"ALF","release_date":"1990-09-22","rating":4,"category":"comedy"}
 ```
 
 #### Tv Series delete endpoint
@@ -275,7 +275,7 @@ Content-Type: application/json
 For testing the **Tv Series delete** API Rest, please execute the following command:
 
 ```bash
-$ curl -X "DELETE" -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/series/detail/6/
+$ curl -X "DELETE" -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/webflix/tv-series/detail/4/
 ```
 
 ## Django ORM Practices
@@ -384,20 +384,20 @@ Type "help", "copyright", "credits" or "license" for more information.
 At Python Interactive Console, please execute the following command:
 
 ```python
->>> from series.models import Serie
->>> from series.serializers import SerieSerializer
+>>> from webflix.models import TvSerie
+>>> from webflix.serializers import TvSerieSerializer
 >>> from rest_framework.renderers import JSONRenderer
 >>> from rest_framework.parsers import JSONParser
 >>> from datetime import datetime
 >>> release_date = datetime.strptime('17-04-2011', '%d-%m-%Y').date()
->>> serie = Serie(name='Game of Thrones', category='drama', release_date=release_date)
->>> serie
-<Serie: Game of Thrones>
->>> serie.save()
+>>> tv_serie = TvSerie(name='Game of Thrones', category='drama', release_date=release_date)
+>>> tv_serie
+<TvSerie: Game of Thrones>
+>>> tv_serie.save()
 >>> release_date = datetime.strptime('24-06-2015', '%d-%m-%Y').date()
->>> serie = Serie(name='Mr. Robot', category='drama', release_date=release_date)
->>> serie.save()
->>> serializer = SerieSerializer(serie)
+>>> tv_serie = TvSerie(name='Mr. Robot', category='drama', release_date=release_date)
+>>> tv_serie.save()
+>>> serializer = TvSerieSerializer(tv_serie)
 >>> serializer.data
 {'category': u'drama', 'pk': 2, 'release_date': '2015-06-24', 'name': u'Mr. Robot', 'rating': 0}
 >>> content = JSONRenderer().render(serializer.data)
@@ -408,20 +408,20 @@ At Python Interactive Console, please execute the following command:
 >>> data = JSONParser().parse(stream)
 >>> data
 {u'category': u'drama', u'pk': 2, u'release_date': u'2015-06-24', u'name': u'Mr. Robot', u'rating': 0}
->>> serializer = SerieSerializer(data=data)
+>>> serializer = TvSerieSerializer(data=data)
 >>> serializer.is_valid()
 True
 >>> serializer.validated_data
 OrderedDict([(u'name', u'Mr. Robot'), (u'release_date', datetime.date(2015, 6, 24)), (u'rating', 0), (u'category', u'drama')])
->>> serie = serializer.save()
->>> serie.save()
->>> Serie.objects.all()
-[<Serie: Game of Thrones>, <Serie: Mr. Robot>], <Serie: Serie object>]
->>> serie.delete()
-(1, {u'series.Serie': 1})
->>> Serie.objects.all()
-[<Serie: Game of Thrones>, <Serie: Mr. Robot>]
->>> serializer = SerieSerializer(Serie.objects.all(), many=True)
+>>> tv_serie = serializer.save()
+>>> tv_serie.save()
+>>> TvSerie.objects.all()
+[<TvSerie: Game of Thrones>, <TvSerie: Mr. Robot>, <TvSerie: Mr. Robot>]
+>>> tv_serie.delete()
+(1, {u'webflix.TvSerie': 1})
+>>> TvSerie.objects.all()
+[<TvSerie: Game of Thrones>, <TvSerie: Mr. Robot>]
+>>> serializer = TvSerieSerializer(TvSerie.objects.all(), many=True)
 >>> serializer.data
 [OrderedDict([('pk', 1), ('name', u'Game of Thrones'), ('release_date', '2011-04-17'), ('rating', 0), ('category', u'drama')]), OrderedDict([('pk', 2), ('name', u'Mr. Robot'), ('release_date', '2015-06-24'), ('rating', 0), ('category', u'drama')])]
 >>> 

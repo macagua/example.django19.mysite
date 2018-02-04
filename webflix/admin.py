@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from series.models import Serie
+from webflix.models import TvSerie
 
 
-class SerieAdmin(admin.ModelAdmin):
+class TvSerieAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Basic information', {
             'fields': [
@@ -17,4 +17,4 @@ class SerieAdmin(admin.ModelAdmin):
     search_fields = ['name', 'category']
 
 
-admin.site.register(Serie, SerieAdmin)
+admin.site.register(TvSerie, TvSerieAdmin)

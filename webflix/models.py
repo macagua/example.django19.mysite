@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class Serie(models.Model):
+class TvSerie(models.Model):
 
     HORROR = 'horror'
     FICTION = 'fiction'
@@ -25,6 +25,10 @@ class Serie(models.Model):
     release_date = models.DateField()
     rating = models.IntegerField(default=0)
     category = models.CharField(max_length=10, choices=CATEGORIES_CHOICES)
+
+    class Meta:
+        verbose_name = "TV Serie"
+        verbose_name_plural = "TV Series"
 
     def __unicode__(self):
         return u'{0}'.format(self.name)

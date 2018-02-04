@@ -5,6 +5,6 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class SeriesConfig(AppConfig):
-    name = 'series'
-    verbose_name = 'TV Series'
+class WebflixConfig(AppConfig):
+    name = 'webflix'
+    verbose_name = 'Webflix'

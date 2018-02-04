@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from rest_framework import serializers
-from .models import Serie
+from webflix.models import TvSerie
 
 
-class SerieSerializer(serializers.ModelSerializer):
+class TvSerieSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Serie
+        model = TvSerie
         fields = ('id', 'name', 'release_date', 'rating', 'category')

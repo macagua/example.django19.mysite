@@ -33,5 +33,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^polls/', include('polls.urls')),
     url(r'^pos/', include('pos.urls')),
-    url(r'^series/', include('series.urls')),
+    url(r'^webflix/', include('webflix.urls')),
 ]
