@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'myapp.apps.MyappConfig',
     'polls.apps.PollsConfig',
     'pos.apps.PosConfig',
+    'series.apps.SeriesConfig',
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -57,6 +57,10 @@ For add data for *Polls* App, please access to the following URL: [http://localh
 
 For add data for *My Application* App, please access to the following URL: [http://localhost:8000/admin/myapp/](http://localhost:8000/admin/myapp/)
 
+### TV Series App
+
+For add data for *TV Series* App, please access to the following URL: [http://localhost:8000/admin/series/](http://localhost:8000/admin/series/)
+
 ### Testing the API
 
 You have many APIs Rest for testing, now access to the APIs, both from the command-line, using tools like **curl**, please execute the following command:
@@ -305,6 +309,65 @@ u'Wanted to form a band..'
 
 >>> Group.objects.filter(members__name__startswith='Slash')
 [<Group: Guns N' Roses>, <Group: Velvet Revolver>]
+```
+
+## Django Rest Framework Practices
+
+For make some practices the Django Rest Framework, please execute the following command:
+
+```bash
+$ python manage.py shell
+Python 2.7.13 (default, Nov 24 2017, 17:33:09) 
+[GCC 6.3.0 20170516] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> 
+```
+
+At Python Interactive Console, please execute the following command:
+
+```python
+>>> from series.models import Serie
+>>> from series.serializers import SerieSerializer
+>>> from rest_framework.renderers import JSONRenderer
+>>> from rest_framework.parsers import JSONParser
+>>> from datetime import datetime
+>>> release_date = datetime.strptime('17-04-2011', '%d-%m-%Y').date()
+>>> serie = Serie(name='Game of Thrones', category='drama', release_date=release_date)
+>>> serie
+<Serie: Game of Thrones>
+>>> serie.save()
+>>> release_date = datetime.strptime('24-06-2015', '%d-%m-%Y').date()
+>>> serie = Serie(name='Mr. Robot', category='drama', release_date=release_date)
+>>> serie.save()
+>>> serializer = SerieSerializer(serie)
+>>> serializer.data
+{'category': u'drama', 'pk': 2, 'release_date': '2015-06-24', 'name': u'Mr. Robot', 'rating': 0}
+>>> content = JSONRenderer().render(serializer.data)
+>>> content
+'{"pk":2,"name":"Mr. Robot","release_date":"2015-06-24","rating":0,"category":"drama"}'
+>>> from django.utils.six import BytesIO
+>>> stream = BytesIO(content)
+>>> data = JSONParser().parse(stream)
+>>> data
+{u'category': u'drama', u'pk': 2, u'release_date': u'2015-06-24', u'name': u'Mr. Robot', u'rating': 0}
+>>> serializer = SerieSerializer(data=data)
+>>> serializer.is_valid()
+True
+>>> serializer.validated_data
+OrderedDict([(u'name', u'Mr. Robot'), (u'release_date', datetime.date(2015, 6, 24)), (u'rating', 0), (u'category', u'drama')])
+>>> serie = serializer.save()
+>>> serie.save()
+>>> Serie.objects.all()
+[<Serie: Game of Thrones>, <Serie: Mr. Robot>], <Serie: Serie object>]
+>>> serie.delete()
+(1, {u'series.Serie': 1})
+>>> Serie.objects.all()
+[<Serie: Game of Thrones>, <Serie: Mr. Robot>]
+>>> serializer = SerieSerializer(Serie.objects.all(), many=True)
+>>> serializer.data
+[OrderedDict([('pk', 1), ('name', u'Game of Thrones'), ('release_date', '2011-04-17'), ('rating', 0), ('category', u'drama')]), OrderedDict([('pk', 2), ('name', u'Mr. Robot'), ('release_date', '2015-06-24'), ('rating', 0), ('category', u'drama')])]
+>>> 
 ```
 
 # Reference
