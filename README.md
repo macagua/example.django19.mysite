@@ -157,6 +157,66 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localh
 ]
 ```
 
+#### Questions endpoint
+
+For testing the **questions** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localhost:8000/polls/questions/
+[
+    {
+        "id": 2,
+        "question_text": "Django is Cool?",
+        "pub_date": "2018-02-03T15:17:16Z"
+    },
+    {
+        "id": 1,
+        "question_text": "Plone rocks?",
+        "pub_date": "2018-02-04T15:16:52Z"
+    }
+]
+```
+
+#### Choices endpoint
+
+For testing the **choices** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/polls/choices/
+[
+    {
+        "id": 5,
+        "choice_text": "Nothing",
+        "votes": 0,
+        "question": 1
+    },
+    {
+        "id": 4,
+        "choice_text": "Very little",
+        "votes": 0,
+        "question": 1
+    },
+    {
+        "id": 3,
+        "choice_text": "Little bit",
+        "votes": 0,
+        "question": 1
+    },
+    {
+        "id": 2,
+        "choice_text": "A lot",
+        "votes": 0,
+        "question": 1
+    },
+    {
+        "id": 1,
+        "choice_text": "Too",
+        "votes": 0,
+        "question": 1
+    }
+]
+```
+
 ## Django ORM Practices
 
 For make some practices the Django ORM, please execute the following command:
