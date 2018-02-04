@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'myapp',
+    'myapp.apps.MyappConfig',
     'polls.apps.PollsConfig',
 ]
 
