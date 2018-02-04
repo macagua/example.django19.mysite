@@ -45,6 +45,24 @@ $ python manage.py runserver
 
 - Open your web browser with the following URL: [http://0.0.0.0:8000/admin/](http://0.0.0.0:8000/admin/) and see the Django Admin Interface, use the user **admin** and password **admin**.
 
+### Points Of Sale App
+
+For add data for *Points Of Sale* App, please access to the following URL:
+
+[http://0.0.0.0:8000/admin/pos/](http://0.0.0.0:8000/admin/pos/)
+
+### Polls App
+
+For add data for *Polls* App, please access to the following URL:
+
+[http://0.0.0.0:8000/admin/pos/](http://0.0.0.0:8000/admin/polls/)
+
+### My Application App
+
+For add data for *My Application* App, please access to the following URL:
+
+[http://0.0.0.0:8000/admin/pos/](http://0.0.0.0:8000/admin/myapp/)
+
 ### Testing the API
 
 You have many APIs Rest for testing, now access to the APIs, both from the command-line, using tools like **curl**, please execute the following command:
