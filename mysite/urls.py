@@ -17,7 +17,6 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.auth.models import User
 from rest_framework import routers
 from mysite.views import UserViewSet, UserProfileViewSet
 
