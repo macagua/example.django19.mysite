@@ -5,6 +5,7 @@ My practices about the following tutorials:
 - [Django 1.9 Project tutorial](https://docs.djangoproject.com/en/1.9/intro/).
 - [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
 - [Introducción a Django Rest Framework](https://axiacore.com/blog/2012/06/introduccion-a-django-rest-framework/).
+- [Levi Velázquez · Crear un API REST con Django Rest Framework - Parte I](http://levipy.com/crear-api-rest-con-django-rest-framework/).
 
 ## Installation
 
@@ -221,6 +222,62 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://local
 ]
 ```
 
+#### Tv Series list endpoint
+
+For testing the **Tv Series list** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/series/list/
+[{"id":1,"name":"Game of Thrones","release_date":"2011-04-17","rating":0,"category":"drama"},{"id":2,"name":"Mr. Robot","release_date":"2015-06-24","rating":0,"category":"drama"},{"id":4,"name":"Timeless","release_date":"2016-02-04","rating":3,"category":"fiction"},{"id":5,"name":"Black Mirror","release_date":"2011-12-17","rating":0,"category":"fiction"}]
+```
+
+#### Tv Series detail endpoint
+
+For testing the **Tv Series detail** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/series/detail/1/
+{"id":1,"name":"Game of Thrones","release_date":"2011-04-17","rating":0,"category":"drama"}
+```
+
+#### Tv Series create endpoint
+
+For testing the **Tv Series create** API Rest, please execute the following command:
+
+```bash
+$ curl -i -X POST -H 'Accept: application/json; indent=4' -u admin:password123 -d '{"name":"Alf","release_date":"1985-04-17","rating":4,"category":"comedy"}' http://localhost:8000/series/list/
+HTTP/1.0 201 Created
+Date: Sun, 04 Feb 2018 20:28:33 GMT
+Server: WSGIServer/0.1 Python/2.7.13
+X-Frame-Options: SAMEORIGIN
+Content-Type: application/json
+
+{"id":6,"name":"Alf","release_date":"1985-04-17","rating":4,"category":"comedy"}
+```
+
+#### Tv Series update endpoint
+
+For testing the **Tv Series update** API Rest, please execute the following command:
+
+```bash
+$ curl -i -X PUT -H 'Accept: application/json; indent=4' -u admin:password123 -d '{"name":"ALF","release_date":"1990-09-22","rating":4,"category":"comedy"}' http://localhost:8000/series/detail/6/
+HTTP/1.0 201 Created
+Date: Sun, 04 Feb 2018 20:28:33 GMT
+Server: WSGIServer/0.1 Python/2.7.13
+X-Frame-Options: SAMEORIGIN
+Content-Type: application/json
+
+{"id":6,"name":"Alf","release_date":"1985-04-17","rating":4,"category":"comedy"}
+```
+
+#### Tv Series delete endpoint
+
+For testing the **Tv Series delete** API Rest, please execute the following command:
+
+```bash
+$ curl -X "DELETE" -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/series/detail/6/
+```
+
 ## Django ORM Practices
 
 For make some practices the Django ORM, please execute the following command:
@@ -375,3 +432,4 @@ OrderedDict([(u'name', u'Mr. Robot'), (u'release_date', datetime.date(2015, 6, 2
 - [Django 1.9 Project tutorial](https://docs.djangoproject.com/en/1.9/intro/).
 - [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
 - [Introducción a Django Rest Framework](https://axiacore.com/blog/2012/06/introduccion-a-django-rest-framework/).
+- [Levi Velázquez · Crear un API REST con Django Rest Framework - Parte I](http://levipy.com/crear-api-rest-con-django-rest-framework/).
