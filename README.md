@@ -41,21 +41,21 @@ You need to run the Django server, please execute the following command:
 $ python manage.py runserver
 ```
 
-- Open your web browser with the following URL: [http://0.0.0.0:8000/](http://0.0.0.0:8000/) and see the Django Web app.
+- Open your web browser with the following URL: [http://localhost:8000/](http://localhost:8000/) and see the Django Web app.
 
-- Open your web browser with the following URL: [http://0.0.0.0:8000/admin/](http://0.0.0.0:8000/admin/) and see the Django Admin Interface, use the user **admin** and password **admin**.
+- Open your web browser with the following URL: [http://localhost:8000/admin/](http://localhost:8000/admin/) and see the Django Admin Interface, use the user **admin** and password **admin**.
 
 ### Points Of Sale App
 
-For add data for *Points Of Sale* App, please access to the following URL: [http://0.0.0.0:8000/admin/pos/](http://0.0.0.0:8000/admin/pos/)
+For add data for *Points Of Sale* App, please access to the following URL: [http://localhost:8000/admin/pos/](http://localhost:8000/admin/pos/)
 
 ### Polls App
 
-For add data for *Polls* App, please access to the following URL: [http://0.0.0.0:8000/admin/polls/](http://0.0.0.0:8000/admin/polls/)
+For add data for *Polls* App, please access to the following URL: [http://localhost:8000/admin/polls/](http://localhost:8000/admin/polls/)
 
 ### My Application App
 
-For add data for *My Application* App, please access to the following URL: [http://0.0.0.0:8000/admin/myapp/](http://0.0.0.0:8000/admin/myapp/)
+For add data for *My Application* App, please access to the following URL: [http://localhost:8000/admin/myapp/](http://localhost:8000/admin/myapp/)
 
 ### Testing the API
 
@@ -66,7 +66,7 @@ You have many APIs Rest for testing, now access to the APIs, both from the comma
 For testing the **Points Of Sale** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0.0.1:8000/pos/list/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/pos/list/
 [
     {
         "id": 2,
@@ -77,7 +77,7 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0
         "latitude": "-71.1561100",
         "options": "N/P",
         "userprofile": [
-            "http://127.0.0.1:8000/mysite/userprofiles/2/"
+            "http://localhost:8000/mysite/userprofiles/2/"
         ],
         "message": "Registrado",
         "actived": true
@@ -91,7 +91,7 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://127.0
         "latitude": "-71.1561100",
         "options": "N/P",
         "userprofile": [
-            "http://127.0.0.1:8000/mysite/userprofiles/1/"
+            "http://localhost:8000/mysite/userprofiles/1/"
         ],
         "message": "Registrado",
         "actived": true
@@ -108,12 +108,12 @@ http://localhost:8000/pos/web-client/
 For testing the **User Profiles** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://127.0.0.1:8000/mysite/userprofiles/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localhost:8000/mysite/userprofiles/
 [
     {
         "id": 1,
         "user": "admin",
-        "photo": "http://127.0.0.1:8000/mysite/userprofiles/myapp/static/images/avatars/patacon.jpg",
+        "photo": "http://localhost:8000/mysite/userprofiles/myapp/static/images/avatars/patacon.jpg",
         "website": "http://localhost:8000/admin/",
         "bio": "Website Aministrator",
         "phone": "+58 0987654321",
@@ -124,7 +124,7 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://127.0.
     {
         "id": 2,
         "user": "leonardo",
-        "photo": "http://127.0.0.1:8000/mysite/userprofiles/myapp/static/images/avatars/yo.png",
+        "photo": "http://localhost:8000/mysite/userprofiles/myapp/static/images/avatars/yo.png",
         "website": "https://macagua.github.io/",
         "bio": "Leonardo José Caballero Garcia is Technical Director at Covantec R.L. firm. He has over 15 years experience in the area of Information Technology of which 12 years are unique in free and open-source software.",
         "phone": "+58 1234567890",
@@ -140,16 +140,16 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://127.0.
 For testing the **users** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://127.0.0.1:8000/mysite/users/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localhost:8000/mysite/users/
 [
     {
-        "url": "http://127.0.0.1:8000/mysite/users/2/",
+        "url": "http://localhost:8000/mysite/users/2/",
         "username": "leonardo",
         "email": "leonardo@mail.com",
         "is_staff": true
     },
     {
-        "url": "http://127.0.0.1:8000/mysite/users/1/",
+        "url": "http://localhost:8000/mysite/users/1/",
         "username": "admin",
         "email": "admin@mail.com",
         "is_staff": true
