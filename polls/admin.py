@@ -7,6 +7,9 @@ from polls.models import Choice, Question
 class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 3
+    # list_display = ('choice_text', 'question', 'votes')
+    # list_filter = ['question', 'votes']
+    # search_fields = ['choice_text']
 
 
 class QuestionAdmin(admin.ModelAdmin):
