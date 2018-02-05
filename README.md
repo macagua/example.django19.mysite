@@ -6,6 +6,7 @@ My practices about the following tutorials:
 - [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
 - [Introducción a Django Rest Framework](https://axiacore.com/blog/2012/06/introduccion-a-django-rest-framework/).
 - [Levi Velázquez · Crear un API REST con Django Rest Framework - Parte I](http://levipy.com/crear-api-rest-con-django-rest-framework/).
+- [Django 1.7 - introducción a Django REST Framework](http://blog.enriqueoriol.com/2015/01/django-1.7-intro-django-rest-framework.html).
 
 ## Installation
 
@@ -130,9 +131,7 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http:/localh
 }
 ```
 
-You can also consume this API endpoint using a web client demo based on Javascrit by accessing the following URL:
-
-http://localhost:8000/pos/web-client/
+You can also consume this API endpoint using a web client demo based on Javascrit by accessing the following URL: [http://localhost:8000/pos/web-client/](http://localhost:8000/pos/web-client/).
 
 #### User Profiles list endpoint
 
@@ -353,6 +352,22 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://local
 }
 ```
 
+#### Survey delete endpoint
+
+For testing the **survey delete** API Rest, please execute the following command:
+
+```bash
+$ curl -i -X DELETE -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/survey/detail/2/
+HTTP/1.0 204 No Content
+Date: Mon, 05 Feb 2018 06:17:51 GMT
+Server: WSGIServer/0.1 Python/2.7.13
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+Content-Length: 0
+Allow: PUT, GET, OPTIONS, DELETE
+
+```
+
 #### Tv Series list endpoint
 
 For testing the **Tv Series list** API Rest, please execute the following command:
@@ -564,3 +579,4 @@ OrderedDict([(u'name', u'Mr. Robot'), (u'release_date', datetime.date(2015, 6, 2
 - [Django Rest Framework 3.6.4](http://www.django-rest-framework.org/#tutorial).
 - [Introducción a Django Rest Framework](https://axiacore.com/blog/2012/06/introduccion-a-django-rest-framework/).
 - [Levi Velázquez · Crear un API REST con Django Rest Framework - Parte I](http://levipy.com/crear-api-rest-con-django-rest-framework/).
+- [Django 1.7 - introducción a Django REST Framework](http://blog.enriqueoriol.com/2015/01/django-1.7-intro-django-rest-framework.html).

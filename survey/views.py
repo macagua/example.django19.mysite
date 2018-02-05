@@ -5,7 +5,8 @@ from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from survey.models import Survey
-from .serializers import SurveySerializer
+from survey.serializers import SurveySerializer
+
 
 @api_view(['GET', 'POST'])
 def survey_list(request):
