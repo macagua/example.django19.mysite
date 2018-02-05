@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
+    'band.apps.BandConfig',
     'myapp.apps.MyappConfig',
     'polls.apps.PollsConfig',
     'pos.apps.PosConfig',

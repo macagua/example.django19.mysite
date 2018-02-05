@@ -5,13 +5,13 @@ from __future__ import unicode_literals
 from django.db import models
 
 # Create your models here.
-class Person(models.Model):
+class Member(models.Model):
     name = models.CharField(max_length=128,
         help_text="Enter the musician name of group musical")
 
     class Meta:
-        verbose_name = "Person"
-        verbose_name_plural = "Persons"
+        verbose_name = "Member"
+        verbose_name_plural = "Members"
 
     def __unicode__(self):
         return "%s" % (self.name)
@@ -23,7 +23,7 @@ class Person(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=128,
         help_text="Enter the group musical name")
-    members = models.ManyToManyField(Person, through='Membership')
+    members = models.ManyToManyField(Member, through='Membership')
 
     class Meta:
         verbose_name = "Group"
@@ -42,7 +42,7 @@ class Group(models.Model):
 
 
 class Membership(models.Model):
-    person = models.ForeignKey(Person, on_delete=models.CASCADE,
+    member = models.ForeignKey(Member, on_delete=models.CASCADE,
         help_text="Select a musician from the list.")
     group = models.ForeignKey(Group, on_delete=models.CASCADE,
         help_text="Select a group musical from the list.")
@@ -57,5 +57,5 @@ class Membership(models.Model):
         verbose_name_plural = "Memberships"
 
     def __unicode__(self):
-    	date_joined = self.date_joined.isoformat().replace('', '')
+        date_joined = self.date_joined.isoformat().replace('', '')
         return "Member: %s from %s" % (self.actived, date_joined)
