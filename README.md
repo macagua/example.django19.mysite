@@ -58,6 +58,10 @@ For add data for *Polls* App, please access to the following URL: [http://localh
 
 For add data for *My Application* App, please access to the following URL: [http://localhost:8000/admin/myapp/](http://localhost:8000/admin/myapp/)
 
+### Survey App
+
+For add data for *Survey* App, please access to the following URL: [http://localhost:8000/admin/survey/](http://localhost:8000/admin/survey/)
+
 ### Webflix App
 
 For add data for *Webflix* App, please access to the following URL: [http://localhost:8000/admin/webflix/](http://localhost:8000/admin/webflix/)
@@ -66,9 +70,9 @@ For add data for *Webflix* App, please access to the following URL: [http://loca
 
 You have many APIs Rest for testing, now access to the APIs, both from the command-line, using tools like **curl**, please execute the following command:
 
-#### Points Of Sale endpoint
+#### Points Of Sale list endpoint
 
-For testing the **Points Of Sale** API Rest, please execute the following command:
+For testing the **Points Of Sale list** API Rest, please execute the following command:
 
 ```bash
 $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/pos/list/
@@ -104,16 +108,38 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://local
 ]
 ```
 
+#### Points Of Sale detail endpoint
+
+For testing the **Points Of Sale detail** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http:/localhost:8000/pos/list/1/
+{
+    "id": 1,
+    "name": "Churros Ezq. Dorzay",
+    "address": "Av. 4, Ezq. Dorzay, Centro, Merida, Venezuela",
+    "brand": "Dorzay",
+    "longitude": "8.5897200",
+    "latitude": "-71.1561100",
+    "options": "N/P",
+    "userprofile": [
+        "http://localhost:8000/mysite/userprofiles/1/"
+    ],
+    "message": "Registrado",
+    "actived": true
+}
+```
+
 You can also consume this API endpoint using a web client demo based on Javascrit by accessing the following URL:
 
 http://localhost:8000/pos/web-client/
 
-#### User Profiles endpoint
+#### User Profiles list endpoint
 
-For testing the **User Profiles** API Rest, please execute the following command:
+For testing the **User Profiles list** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localhost:8000/mysite/userprofiles/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/mysite/userprofiles/
 [
     {
         "id": 1,
@@ -140,12 +166,31 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localh
 ]
 ```
 
-#### Users endpoint
+#### User Profiles detail endpoint
 
-For testing the **users** API Rest, please execute the following command:
+For testing the **User Profiles detail** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localhost:8000/mysite/users/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http:/localhost:8000/mysite/userprofiles/1/
+{
+    "id": 1,
+    "user": "admin",
+    "photo": "http://localhost:8000/mysite/userprofiles/1/myapp/static/images/avatars/patacon.jpg",
+    "website": "http://localhost:8000/admin/",
+    "bio": "Website Aministrator",
+    "phone": "+58 0987654321",
+    "city": "Maracaibo",
+    "country": "Venezuela",
+    "organization": "My Company"
+}
+```
+
+#### Users list endpoint
+
+For testing the **users list** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/mysite/users/
 [
     {
         "url": "http://localhost:8000/mysite/users/2/",
@@ -162,12 +207,26 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localh
 ]
 ```
 
-#### Questions endpoint
+#### Users detail endpoint
 
-For testing the **questions** API Rest, please execute the following command:
+For testing the **users detail** API Rest, please execute the following command:
 
 ```bash
-$ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localhost:8000/polls/questions/
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http:/localhost:8000/mysite/users/1/
+{
+    "url": "http://localhost:8000/mysite/users/1/",
+    "username": "admin",
+    "email": "admin@mail.com",
+    "is_staff": true
+}
+```
+
+#### Questions list endpoint
+
+For testing the **questions list** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/polls/questions/
 [
     {
         "id": 2,
@@ -182,9 +241,22 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 htp://localh
 ]
 ```
 
-#### Choices endpoint
+#### Questions detail endpoint
 
-For testing the **choices** API Rest, please execute the following command:
+For testing the **questions detail** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http:/localhost:8000/polls/questions/1/
+{
+    "id": 1,
+    "question_text": "Plone rocks?",
+    "pub_date": "2018-02-04T15:16:52Z"
+}
+```
+
+#### Choices list endpoint
+
+For testing the **choices list** API Rest, please execute the following command:
 
 ```bash
 $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/polls/choices/
@@ -220,6 +292,65 @@ $ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://local
         "question": 1
     }
 ]
+```
+
+#### Choices detail endpoint
+
+For testing the **choices detail** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http:/localhost:8000/polls/choices/1/
+{
+    "id": 1,
+    "choice_text": "Too",
+    "votes": 0,
+    "question": 1
+}
+```
+
+#### Survey list endpoint
+
+For testing the **survey list** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http:/localhost:8000/survey/list/
+[
+    {
+        "id": 1,
+        "owner": "Leonardo",
+        "title": "Half time of Super Bowl 2018",
+        "question": "What about the Half time of Super Bowl 2018?",
+        "active": true,
+        "created": "2018-02-05T04:06:00.667815Z",
+        "updated": "2018-02-05T04:06:00.667912Z"
+    },
+    {
+        "id": 2,
+        "owner": "Macagua",
+        "title": "About Django",
+        "question": "What do you thing about Django?",
+        "active": true,
+        "created": "2018-02-05T04:25:36.718465Z",
+        "updated": "2018-02-05T04:25:36.718561Z"
+    }
+]
+```
+
+#### Survey detail endpoint
+
+For testing the **survey detail** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/survey/detail/1/
+{
+    "id": 1,
+    "owner": "Leonardo",
+    "title": "Half time of Super Bowl 2018",
+    "question": "What about the Half time of Super Bowl 2018?",
+    "active": true,
+    "created": "2018-02-05T04:06:00.667815Z",
+    "updated": "2018-02-05T04:06:00.667912Z"
+}
 ```
 
 #### Tv Series list endpoint

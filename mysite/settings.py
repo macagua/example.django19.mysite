@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'myapp.apps.MyappConfig',
     'polls.apps.PollsConfig',
     'pos.apps.PosConfig',
+    'survey.apps.SurveyConfig',
     'webflix.apps.WebflixConfig',
 ]
 
@@ -133,7 +134,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    #    'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
     # Source http://www.django-rest-framework.org/api-guide/pagination/
     # 'DEFAULT_PAGINATION_CLASS': [
