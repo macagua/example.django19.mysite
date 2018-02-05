@@ -1,33 +1,37 @@
 # -*- coding: utf-8 -*-
 
 from django.http import Http404
-from rest_framework import status
+from rest_framework import status, mixins, generics
 from rest_framework import permissions
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from survey.models import Survey
 from survey.serializers import SurveySerializer
 
 
-class SurveyList(APIView):
+class SurveyMixin(object):
+    queryset = Survey.objects.all()
+    serializer_class = SurveySerializer
+
+
+# class SurveyList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+class SurveyList(SurveyMixin, ListCreateAPIView):
     '''
     List all surveys, or create a new survey
     '''
-    def get(self, request, format=None):
-        survey = Survey.objects.all()
-        serializer = SurveySerializer(survey, many=True)
-        return Response(serializer.data)
+    queryset = Survey.objects.all()
+    serializer_class = SurveySerializer
 
-    def post(self, request, format=None):
-        serializer = SurveySerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
 
-class SurveyDetail(APIView):
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+# class SurveyDetail(APIView):
+class SurveyDetail(SurveyMixin, RetrieveUpdateDestroyAPIView):
     '''
     Get, update, or delete a specific survey
     '''
