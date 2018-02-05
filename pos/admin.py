@@ -27,23 +27,4 @@ class PointOfSaleAdmin(admin.ModelAdmin):
     search_fields = ['name', 'address', 'brand']
 
 
-class UserProfileAdmin(admin.ModelAdmin):
-    fieldsets = [
-        ('User information', {
-            'fields': [
-                'user', 'photo', 'bio', 'organization'
-            ]
-        }),
-        ('Contact information', {
-            'fields': [
-                'website', 'phone', 'city', 'country'
-            ]
-        }),
-    ]
-    list_display = ('user', 'photo', 'organization', 'phone', 'city', 'country')
-    list_filter = ['organization', 'city', 'country']
-    search_fields = ['user', 'address', 'organization']
-
-
 admin.site.register(PointOfSale, PointOfSaleAdmin)
-admin.site.register(UserProfile, UserProfileAdmin)

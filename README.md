@@ -7,6 +7,7 @@ My practices about the following tutorials:
 - [Introducción a Django Rest Framework](https://axiacore.com/blog/2012/06/introduccion-a-django-rest-framework/).
 - [Levi Velázquez · Crear un API REST con Django Rest Framework - Parte I](http://levipy.com/crear-api-rest-con-django-rest-framework/).
 - [Django 1.7 - introducción a Django REST Framework](http://blog.enriqueoriol.com/2015/01/django-1.7-intro-django-rest-framework.html).
+- [Django REST Framework: Serializers anidados y ModelViewSet](http://blog.enriqueoriol.com/2015/03/django-rest-framework-serializers.html).
 
 ## Installation
 
@@ -424,6 +425,122 @@ For testing the **Tv Series delete** API Rest, please execute the following comm
 $ curl -X "DELETE" -H 'Accept: application/json; indent=4' -u admin:password123 http://localhost:8000/webflix/tv-series/detail/4/
 ```
 
+#### Posts list endpoint
+
+For testing the **posts list** API Rest, please execute the following command:
+
+```bash
+$ curl -H 'Accept: application/json; indent=4' -u admin:password123  http://localhost:8000/myapp/v1/posts/
+[
+    {
+        "id": 1,
+        "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer egestas sodales congue. Fusce finibus augue at erat malesuada, ut lacinia mi iaculis. Maecenas posuere massa nunc, sed rutrum risus mattis non. Sed purus diam, tincidunt vitae quam et, lobortis gravida massa. Aenean ut lectus tortor. Integer consectetur convallis nulla. Duis sit amet ex sapien. Integer mauris lectus, lacinia sed nulla eget, vulputate posuere nunc. Nunc tempor vitae dui non sagittis.\r\n\r\nAenean interdum, nunc id porttitor efficitur, lacus eros interdum ante, et luctus justo quam ut purus. In sed sem lacus. Sed lacinia ipsum et interdum vestibulum. Curabitur porttitor sapien non dignissim dictum. Sed id ipsum ut nulla efficitur lacinia. Nullam molestie, arcu sed elementum malesuada, nibh lacus ornare tellus, facilisis scelerisque purus odio id erat. Sed porta bibendum tortor eleifend pretium.\r\n\r\nSed eleifend eu leo vitae egestas. Vivamus lobortis tincidunt sapien, vitae hendrerit ipsum pellentesque vel. Aenean risus leo, hendrerit in fringilla nec, iaculis id tellus. Sed posuere lorem vitae eros posuere viverra. Duis convallis egestas viverra. Aenean bibendum in nulla nec pellentesque. Duis vel porta nisi. Nunc accumsan magna at turpis congue, ac venenatis risus dictum. Fusce vel nisl vel lectus pretium interdum porttitor commodo mi.",
+        "owner": {
+            "id": 2,
+            "user": "leonardo",
+            "photo": "http://localhost:8000/myapp/v1/posts/myapp/static/images/avatars/yo.png",
+            "website": "https://macagua.github.io/",
+            "bio": "Leonardo José Caballero Garcia is Technical Director at Covantec R.L. firm. He has over 15 years experience in the area of Information Technology of which 12 years are unique in free and open-source software.",
+            "phone": "+58 1234567890",
+            "city": "Rubio",
+            "country": "Venezuela",
+            "organization": "Plone Venezuela"
+        },
+        "comments": [
+            {
+                "text": "Look so great!",
+                "owner": 1
+            },
+            {
+                "text": "Thanks, it's the idea ;-)",
+                "owner": 2
+            },
+            {
+                "text": "Really thanks you for the post!",
+                "owner": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "New version for our Website",
+        "body": "New version for our Website is cool more faster with zero erros ;-)\r\n\r\nEnjoy it!\r\n\r\nBest\r\n--\r\nThe Webmaster",
+        "owner": {
+            "id": 1,
+            "user": "admin",
+            "photo": "http://localhost:8000/myapp/v1/posts/myapp/static/images/avatars/patacon.jpg",
+            "website": "http://localhost:8000/admin/",
+            "bio": "Website Aministrator",
+            "phone": "+58 0987654321",
+            "city": "Maracaibo",
+            "country": "Venezuela",
+            "organization": "My Company"
+        },
+        "comments": [
+            {
+                "text": "Thanks you :-)",
+                "owner": 2
+            },
+            {
+                "text": "No problem ;-)",
+                "owner": 1
+            }
+        ]
+    }
+]
+```
+
+#### Posts detail endpoint
+
+For testing the **posts detail** API Rest, please execute the following command:
+
+```bash
+$ $ curl -H 'Accept: application/json; indent=4' -u admin:password123  http:/localhost:8000/myapp/v1/post/2/
+{
+    "id": 2,
+    "title": "New version for our Website",
+    "body": "New version for our Website is cool more faster with zero erros ;-)\r\n\r\nEnjoy it!\r\n\r\nBest\r\n--\r\nThe Webmaster",
+    "owner": {
+        "id": 1,
+        "user": "admin",
+        "photo": "http://localhost:8000/myapp/v1/post/4/myapp/static/images/avatars/patacon.jpg",
+        "website": "http://localhost:8000/admin/",
+        "bio": "Website Aministrator",
+        "phone": "+58 0987654321",
+        "city": "Maracaibo",
+        "country": "Venezuela",
+        "organization": "My Company"
+    },
+    "comments": [
+        {
+            "text": "Thanks you :-)",
+            "owner": 2
+        },
+        {
+            "text": "No problem ;-)",
+            "owner": 1
+        }
+    ]
+}
+```
+
+#### Posts delete endpoint
+
+For testing the **posts delete** API Rest, please execute the following command:
+
+```bash
+$ curl -i -X DELETE -H 'Accept: application/json; indent=4' -u admi:password123 http://localhost:8000/myapp/v1/post/1/
+HTTP/1.0 204 No Content
+Date: Mon, 05 Feb 2018 08:39:38 GMT
+Server: WSGIServer/0.1 Python/2.7.13
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+Content-Length: 0
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+
+```
+
 ## Django ORM Practices
 
 For make some practices the Django ORM, please execute the following command:
@@ -471,6 +588,22 @@ At Python Interactive Console, please execute the following command:
 >>> m6.save()
 >>> m7 = Membership(person=scott, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
 >>> m7.save()
+
+#### Posts delete endpoint
+
+For testing the **posts delete** API Rest, please execute the following command:
+
+```bash
+$ curl -i -X DELETE -H 'Accept: application/json; indent=4' -u admi:password123 http://localhost:8000/myapp/v1/post/1/
+HTTP/1.0 204 No Content
+Date: Mon, 05 Feb 2018 08:39:38 GMT
+Server: WSGIServer/0.1 Python/2.7.13
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+Content-Length: 0
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+
+```
 >>> m8 = Membership(person=dave, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
 >>> m8.save()
 >>> m9 = Membership(person=matt, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
@@ -580,3 +713,4 @@ OrderedDict([(u'name', u'Mr. Robot'), (u'release_date', datetime.date(2015, 6, 2
 - [Introducción a Django Rest Framework](https://axiacore.com/blog/2012/06/introduccion-a-django-rest-framework/).
 - [Levi Velázquez · Crear un API REST con Django Rest Framework - Parte I](http://levipy.com/crear-api-rest-con-django-rest-framework/).
 - [Django 1.7 - introducción a Django REST Framework](http://blog.enriqueoriol.com/2015/01/django-1.7-intro-django-rest-framework.html).
+- [Django REST Framework: Serializers anidados y ModelViewSet](http://blog.enriqueoriol.com/2015/03/django-rest-framework-serializers.html).
