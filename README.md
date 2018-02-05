@@ -588,22 +588,6 @@ At Python Interactive Console, please execute the following command:
 >>> m6.save()
 >>> m7 = Membership(person=scott, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
 >>> m7.save()
-
-#### Posts delete endpoint
-
-For testing the **posts delete** API Rest, please execute the following command:
-
-```bash
-$ curl -i -X DELETE -H 'Accept: application/json; indent=4' -u admi:password123 http://localhost:8000/myapp/v1/post/1/
-HTTP/1.0 204 No Content
-Date: Mon, 05 Feb 2018 08:39:38 GMT
-Server: WSGIServer/0.1 Python/2.7.13
-Vary: Accept, Cookie
-X-Frame-Options: SAMEORIGIN
-Content-Length: 0
-Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-
-```
 >>> m8 = Membership(person=dave, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
 >>> m8.save()
 >>> m9 = Membership(person=matt, group=velvet_revolver, date_joined=date(2002, 1, 22), invite_reason="Wanted to form a new band...", actived=True)
